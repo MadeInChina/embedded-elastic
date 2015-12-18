@@ -9,7 +9,7 @@ object library {
   )
 
   val test = Seq(
-    "org.scalatest" %% "scalatest" % "latest.integration" % "test",
+    "org.scalatest" %% "scalatest" % "2.2.5" % "test",
     "org.specs2" % "specs2_2.11" % "2.3.13" % "test"
   )
 
