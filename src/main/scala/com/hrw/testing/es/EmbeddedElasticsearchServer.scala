@@ -6,7 +6,7 @@ import java.nio.file.Files
 import com.sksamuel.elastic4s.ElasticClient
 import org.apache.commons.io.FileUtils
 import org.elasticsearch.client.Client
-import org.elasticsearch.common.settings.ImmutableSettings
+import org.elasticsearch.common.settings.Settings
 import org.elasticsearch.node.NodeBuilder._
 
 
@@ -16,7 +16,7 @@ class EmbeddedElasticsearchServer(val clusterName: String) extends Logs {
   val scriptDir = new File(dataDir, "config/scripts")
   scriptDir.mkdirs()
   val scriptFile = new File(scriptDir, "demo.groovy")
-  val settings = ImmutableSettings.settingsBuilder
+  val settings = Settings.settingsBuilder
     .put("node.data", "true")
     .put("script.groovy.sandbox.enabled", true)
     .put("path.conf", scriptDir.toString)
