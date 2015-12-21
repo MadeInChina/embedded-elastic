@@ -23,7 +23,10 @@ object library {
 
 
   val elasticsearch = Seq(
-    "com.sksamuel.elastic4s" %% "elastic4s" % "1.4.13"
+    "com.sksamuel.elastic4s" %% "elastic4s-core" % "1.7.4",
+    "com.sksamuel.elastic4s" %% "elastic4s-jackson" % "1.7.4",
+    "com.sksamuel.elastic4s" %% "elastic4s-json4s" % "1.7.4",
+    "org.elasticsearch" % "elasticsearch" % "1.7.3"
   ) map (_
     withSources())
 
