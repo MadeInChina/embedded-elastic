@@ -18,7 +18,6 @@ object library {
     "org.json4s" %% "json4s-jackson" % "3.2.9",
     "org.codehaus.groovy" % "groovy-all" % "2.3.2",
     "org.apache.lucene" % "lucene-expressions" % "4.10.4"
-
   )
 
 
