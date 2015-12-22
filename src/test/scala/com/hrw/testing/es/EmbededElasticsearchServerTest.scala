@@ -1,7 +1,6 @@
 package com.hrw.testing.es
 
 import com.sksamuel.elastic4s.ElasticDsl.{field, index, put, search, _}
-import com.sksamuel.elastic4s.jackson.{ElasticJackson}
 import com.sksamuel.elastic4s.mappings.FieldType.{IntegerType, GeoPointType, StringType}
 import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
@@ -33,7 +32,6 @@ class EmbededElasticsearchServerTest extends Specification with EmbeddedElastics
   }
   "UserProfileIndexRepository" should {
     "return profile id correct" in {
-      import ElasticJackson.Implicits._
       val userProfileIndex = User(id = "123:qq", name = "test",age = 0,gender = 0,location = Location(0.0,0.0))
       elasticsearchClient.execute {
         index into "example/profile" source userProfileIndex
@@ -41,7 +39,7 @@ class EmbededElasticsearchServerTest extends Specification with EmbeddedElastics
       elasticsearchServer.refresh("example")
 
       val userProfileIndexList = elasticsearchClient.execute {
-        search in "example/profile" query matchAllQuery
+        search in "example/profile" query matchall
       }.await.getHits.getHits().map(data => {
         data.sourceAsString().fromJsonString[User]
       })
