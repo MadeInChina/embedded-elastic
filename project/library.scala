@@ -22,7 +22,8 @@ object library {
 
 
   val elasticsearch = Seq(
-    "com.sksamuel.elastic4s" %% "elastic4s" % "1.4.13"
+    "com.sksamuel.elastic4s" %% "elastic4s" % "1.4.13",
+    "com.fasterxml.jackson.module" % "jackson-module-scala_2.11" % "2.4.4"
   ) map (_
     withSources())
 

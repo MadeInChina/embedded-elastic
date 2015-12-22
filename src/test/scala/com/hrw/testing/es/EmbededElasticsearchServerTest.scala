@@ -2,6 +2,7 @@ package com.hrw.testing.es
 
 import com.sksamuel.elastic4s.ElasticDsl.{field, index, put, search, _}
 import com.sksamuel.elastic4s.mappings.FieldType.{IntegerType, GeoPointType, StringType}
+import com.sksamuel.elastic4s.source.ObjectSource
 import org.junit.runner.RunWith
 import org.specs2.mutable.Specification
 import org.specs2.runner.JUnitRunner
@@ -34,7 +35,7 @@ class EmbededElasticsearchServerTest extends Specification with EmbeddedElastics
     "return profile id correct" in {
       val userProfileIndex = User(id = "123:qq", name = "test",age = 0,gender = 0,location = Location(0.0,0.0))
       elasticsearchClient.execute {
-        index into "example/profile" source userProfileIndex
+        index into "example/profile" doc ObjectSource(userProfileIndex)
       }.await
       elasticsearchServer.refresh("example")
 
